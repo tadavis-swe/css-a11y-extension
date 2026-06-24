@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "CSS A11y Extension",
+  "description": "Improves accessibility by scaling CSS variables and enhancing visual clarity.",
+  "version": "0.1.0",
+
+  "icons": {
+    "128": "assets/icon128.png"
+  },
+
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "CSS A11y Tools"
+  },
+
+  "permissions": [
+    "storage",
+    "scripting",
+    "activeTab"
+  ],
+
+  "background": {
+    "service_worker": "src/background.js"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content.js"],
+      "css": ["styles/injected.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
